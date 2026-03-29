@@ -1,128 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Onder de Oppervlakte — Webgame</title>
+  <title>Onder de Oppervlakte — v6</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div id="app">
-    <header class="topbar panel">
-      <div>
-        <p class="eyebrow">Serious RPG</p>
-        <h1>Onder de Oppervlakte</h1>
-        <p class="subtitle">Signalering, integrale controles en keuzes met gevolgen.</p>
-      </div>
-      <div class="top-actions">
-        <button id="saveBtn" class="secondary">Opslaan</button>
-        <button id="resetBtn" class="secondary danger">Nieuwe run</button>
-      </div>
-    </header>
+  <div class="aurora aurora-a"></div>
+  <div class="aurora aurora-b"></div>
+  <div class="noise"></div>
 
-    <main class="layout">
-      <aside class="panel sidebar">
-        <section>
-          <h2>Profiel</h2>
-          <div id="profileCard" class="card small-card"></div>
-        </section>
-        <section>
-          <h2>Stats</h2>
-          <div id="stats"></div>
-        </section>
-        <section>
-          <h2>Voortgang</h2>
-          <div class="meta-row"><span>Dossiers</span><strong id="progressLabel">0 / 4</strong></div>
-          <div class="meta-row"><span>Reputatie</span><strong id="reputationLabel">Neutraal</strong></div>
-          <div class="meta-row"><span>Risico</span><strong id="riskLabel">0</strong></div>
-        </section>
-        <section>
-          <h2>Inventory</h2>
-          <ul id="inventory" class="chips"></ul>
-        </section>
-        <section>
-          <h2>Partners</h2>
-          <ul id="partners" class="chips"></ul>
-        </section>
-      </aside>
+  <header class="topbar glass">
+    <div>
+      <div class="eyebrow">Serious RPG / Roleplay Game</div>
+      <h1>Onder de Oppervlakte <span>v6</span></h1>
+    </div>
+    <div class="topbar-actions">
+      <button id="saveBtn" class="ghost-btn">Opslaan</button>
+      <button id="resetBtn" class="ghost-btn danger">Nieuwe campagne</button>
+      <button id="musicBtn" class="ghost-btn">Ambient: uit</button>
+    </div>
+  </header>
 
-      <section class="panel mainpanel">
-        <section id="screenStart" class="screen">
-          <div class="hero-grid">
-            <div>
-              <p class="eyebrow">Campagne</p>
-              <h2>Start als Analist, Verbinder of Handhaver</h2>
-              <p class="lead">Onderzoek signalen, bouw dossiers op, werk samen met partners en bepaal of jij vooral zorgvuldig, mensgericht of daadkrachtig optreedt.</p>
-            </div>
-            <div class="card hero-card">
-              <h3>Deze build is gefixt</h3>
-              <ul>
-                <li>Start campagne werkt nu direct</li>
-                <li>Kaart opent automatisch na je klassekeuze</li>
-                <li>Dossiers lopen één voor één door</li>
-                <li>Autosave + handmatig opslaan</li>
-              </ul>
-            </div>
-          </div>
+  <main class="layout">
+    <section class="main-panel glass">
+      <div id="screen-landing" class="screen active"></div>
+      <div id="screen-map" class="screen"></div>
+      <div id="screen-dossier" class="screen"></div>
+      <div id="screen-report" class="screen"></div>
+    </section>
 
-          <div id="classGrid" class="class-grid"></div>
-          <div class="actions end">
-            <button id="startBtn" disabled>Start campagne</button>
-          </div>
-        </section>
-
-        <section id="screenMap" class="screen hidden">
-          <div class="screen-header">
-            <div>
-              <p class="eyebrow">Wereldkaart</p>
-              <h2>Dossiers Gemeente Emmen</h2>
-            </div>
-            <button id="exportBtn" class="secondary">Rapportage exporteren</button>
-          </div>
-          <div id="mapGrid" class="map-grid"></div>
-          <div id="sideQuest" class="card sidequest"></div>
-        </section>
-
-        <section id="screenCase" class="screen hidden">
-          <div class="screen-header">
-            <div>
-              <p id="caseEyebrow" class="eyebrow">Dossier</p>
-              <h2 id="caseTitle">Titel</h2>
-            </div>
-            <button id="backBtn" class="secondary">Terug naar kaart</button>
-          </div>
-          <div id="npcCard" class="card npc-card"></div>
-          <div id="caseStory" class="story"></div>
-          <div id="caseChoices" class="choice-list"></div>
-          <div id="caseExtra" class="card extra-box"></div>
-        </section>
-
-        <section id="screenFinal" class="screen hidden">
-          <p class="eyebrow">Finale</p>
-          <h2>Eindrapport van jouw aanpak</h2>
-          <div id="finalText" class="story"></div>
-          <div class="actions end">
-            <button id="restartBtn">Speel opnieuw</button>
-          </div>
-        </section>
+    <aside class="sidebar glass">
+      <section class="profile-card">
+        <div class="portrait-frame">
+          <div id="classPortrait" class="portrait portrait-neutral"></div>
+        </div>
+        <div>
+          <div class="eyebrow">Jouw rol</div>
+          <h2 id="className">Nog niet gekozen</h2>
+          <p id="classDesc">Kies jouw stijl: analyseren, verbinden of daadkrachtig optreden.</p>
+        </div>
       </section>
 
-      <aside class="panel sidebar rightcol">
-        <section>
-          <h2>Logboek</h2>
-          <div id="logbook" class="logbook"></div>
-        </section>
-        <section>
-          <h2>Notities</h2>
-          <div class="card small-card">
-            Let op patronen, werkvolgorde, partnerafstemming en de balans tussen menselijkheid en handhaving.
-          </div>
-        </section>
-      </aside>
-    </main>
-  </div>
+      <section>
+        <div class="section-title">Statistieken</div>
+        <div id="stats"></div>
+      </section>
+
+      <section>
+        <div class="section-title">Partners</div>
+        <div id="partners"></div>
+      </section>
+
+      <section>
+        <div class="section-title">Inventory</div>
+        <div id="inventory" class="pill-list"></div>
+      </section>
+
+      <section>
+        <div class="section-title">Logboek</div>
+        <div id="logbook" class="logbook"></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footer">© Sanne de Vrieze 2026 — concept game “Onder de Oppervlakte”</footer>
 
   <script src="game.js"></script>
 </body>
