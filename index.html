@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onder de Oppervlakte — RPG v3</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar glass">
+      <div>
+        <h1>Onder de Oppervlakte</h1>
+        <p class="subtitle">Serious RPG over signalering, integrale controles en keuzes met gevolgen</p>
+      </div>
+      <div class="top-actions">
+        <button id="saveBtn">Opslaan</button>
+        <button id="resetBtn" class="secondary">Nieuwe run</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar glass">
+        <section>
+          <h2>Profiel</h2>
+          <div id="profileCard" class="profile-card"></div>
+        </section>
+
+        <section>
+          <h2>Stats</h2>
+          <div id="stats"></div>
+        </section>
+
+        <section>
+          <h2>Voortgang</h2>
+          <div class="progress-line"><span>Dossier</span><strong id="caseLabel">0 / 4</strong></div>
+          <div class="progress-line"><span>Reputatie</span><strong id="reputationLabel">Neutraal</strong></div>
+          <div class="progress-line"><span>Risicoscore</span><strong id="riskLabel">0</strong></div>
+        </section>
+
+        <section>
+          <h2>Inventory</h2>
+          <ul id="inventory" class="tag-list"></ul>
+        </section>
+
+        <section>
+          <h2>Partners</h2>
+          <ul id="partners" class="tag-list"></ul>
+        </section>
+      </aside>
+
+      <section class="center-column">
+        <div id="screenStart" class="panel glass active">
+          <div class="hero">
+            <div>
+              <span class="eyebrow">v3 — uitgebreid</span>
+              <h2>Jij bepaalt wat boven tafel komt</h2>
+              <p>
+                Start als adviseur/toezichthouder binnen OOV. Onderzoek signalen, stem af met ketenpartners,
+                voer integrale controles uit en balanceer tussen daadkracht, zorg en bestuurlijke realiteit.
+              </p>
+            </div>
+            <div class="hero-card glow">
+              <h3>Nieuw in deze versie</h3>
+              <ul>
+                <li>Klassekeuze met unieke bonus</li>
+                <li>Wereldkaart met dossiers en finale</li>
+                <li>NPC-portretten in kaartstijl</li>
+                <li>Zijmissies en verborgen bewijs</li>
+                <li>Rapportage-export + autosave</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="class-grid" id="classGrid"></div>
+          <div class="start-actions">
+            <button id="startGameBtn" disabled>Start campagne</button>
+          </div>
+        </div>
+
+        <div id="screenMap" class="panel glass hidden">
+          <div class="section-header">
+            <div>
+              <span class="eyebrow">Wereldkaart</span>
+              <h2>Dossiers in Emmen</h2>
+            </div>
+            <button id="exportBtn" class="secondary">Rapportage exporteren</button>
+          </div>
+          <div id="mapGrid" class="map-grid"></div>
+          <div id="sideQuestBox" class="sidequest glass inner-box"></div>
+        </div>
+
+        <div id="screenCase" class="panel glass hidden">
+          <div class="section-header">
+            <div>
+              <span id="caseEyebrow" class="eyebrow">Dossier</span>
+              <h2 id="caseTitle">Titel</h2>
+            </div>
+            <button id="backToMapBtn" class="secondary">Terug naar kaart</button>
+          </div>
+
+          <div class="npc-card" id="npcCard"></div>
+          <div id="storyText" class="story"></div>
+          <div id="choiceList" class="choices"></div>
+          <div id="caseMeta" class="inner-box"></div>
+        </div>
+
+        <div id="screenFinal" class="panel glass hidden">
+          <span class="eyebrow">Eindrapport</span>
+          <h2>Evaluatie van jouw aanpak</h2>
+          <div id="finalSummary" class="story"></div>
+          <div class="start-actions">
+            <button id="restartBtn">Speel opnieuw</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="rightbar glass">
+        <section>
+          <h2>Logboek</h2>
+          <div id="logbook" class="logbook"></div>
+        </section>
+        <section>
+          <h2>Notities</h2>
+          <div id="notes" class="notes">
+            <p>Zoek naar patronen, afwijkingen in openingstijden, rolverdeling bij partners en bestuurlijke opvolging.</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
