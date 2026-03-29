@@ -3,127 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Onder de Oppervlakte — RPG v3</title>
+  <title>Onder de Oppervlakte — Webgame</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
   <div id="app">
-    <header class="topbar glass">
+    <header class="topbar panel">
       <div>
+        <p class="eyebrow">Serious RPG</p>
         <h1>Onder de Oppervlakte</h1>
-        <p class="subtitle">Serious RPG over signalering, integrale controles en keuzes met gevolgen</p>
+        <p class="subtitle">Signalering, integrale controles en keuzes met gevolgen.</p>
       </div>
       <div class="top-actions">
-        <button id="saveBtn">Opslaan</button>
-        <button id="resetBtn" class="secondary">Nieuwe run</button>
+        <button id="saveBtn" class="secondary">Opslaan</button>
+        <button id="resetBtn" class="secondary danger">Nieuwe run</button>
       </div>
     </header>
 
     <main class="layout">
-      <aside class="sidebar glass">
+      <aside class="panel sidebar">
         <section>
           <h2>Profiel</h2>
-          <div id="profileCard" class="profile-card"></div>
+          <div id="profileCard" class="card small-card"></div>
         </section>
-
         <section>
           <h2>Stats</h2>
           <div id="stats"></div>
         </section>
-
         <section>
           <h2>Voortgang</h2>
-          <div class="progress-line"><span>Dossier</span><strong id="caseLabel">0 / 4</strong></div>
-          <div class="progress-line"><span>Reputatie</span><strong id="reputationLabel">Neutraal</strong></div>
-          <div class="progress-line"><span>Risicoscore</span><strong id="riskLabel">0</strong></div>
+          <div class="meta-row"><span>Dossiers</span><strong id="progressLabel">0 / 4</strong></div>
+          <div class="meta-row"><span>Reputatie</span><strong id="reputationLabel">Neutraal</strong></div>
+          <div class="meta-row"><span>Risico</span><strong id="riskLabel">0</strong></div>
         </section>
-
         <section>
           <h2>Inventory</h2>
-          <ul id="inventory" class="tag-list"></ul>
+          <ul id="inventory" class="chips"></ul>
         </section>
-
         <section>
           <h2>Partners</h2>
-          <ul id="partners" class="tag-list"></ul>
+          <ul id="partners" class="chips"></ul>
         </section>
       </aside>
 
-      <section class="center-column">
-        <div id="screenStart" class="panel glass active">
-          <div class="hero">
+      <section class="panel mainpanel">
+        <section id="screenStart" class="screen">
+          <div class="hero-grid">
             <div>
-              <span class="eyebrow">v3 — uitgebreid</span>
-              <h2>Jij bepaalt wat boven tafel komt</h2>
-              <p>
-                Start als adviseur/toezichthouder binnen OOV. Onderzoek signalen, stem af met ketenpartners,
-                voer integrale controles uit en balanceer tussen daadkracht, zorg en bestuurlijke realiteit.
-              </p>
+              <p class="eyebrow">Campagne</p>
+              <h2>Start als Analist, Verbinder of Handhaver</h2>
+              <p class="lead">Onderzoek signalen, bouw dossiers op, werk samen met partners en bepaal of jij vooral zorgvuldig, mensgericht of daadkrachtig optreedt.</p>
             </div>
-            <div class="hero-card glow">
-              <h3>Nieuw in deze versie</h3>
+            <div class="card hero-card">
+              <h3>Deze build is gefixt</h3>
               <ul>
-                <li>Klassekeuze met unieke bonus</li>
-                <li>Wereldkaart met dossiers en finale</li>
-                <li>NPC-portretten in kaartstijl</li>
-                <li>Zijmissies en verborgen bewijs</li>
-                <li>Rapportage-export + autosave</li>
+                <li>Start campagne werkt nu direct</li>
+                <li>Kaart opent automatisch na je klassekeuze</li>
+                <li>Dossiers lopen één voor één door</li>
+                <li>Autosave + handmatig opslaan</li>
               </ul>
             </div>
           </div>
 
-          <div class="class-grid" id="classGrid"></div>
-          <div class="start-actions">
-            <button id="startGameBtn" disabled>Start campagne</button>
+          <div id="classGrid" class="class-grid"></div>
+          <div class="actions end">
+            <button id="startBtn" disabled>Start campagne</button>
           </div>
-        </div>
+        </section>
 
-        <div id="screenMap" class="panel glass hidden">
-          <div class="section-header">
+        <section id="screenMap" class="screen hidden">
+          <div class="screen-header">
             <div>
-              <span class="eyebrow">Wereldkaart</span>
-              <h2>Dossiers in Emmen</h2>
+              <p class="eyebrow">Wereldkaart</p>
+              <h2>Dossiers Gemeente Emmen</h2>
             </div>
             <button id="exportBtn" class="secondary">Rapportage exporteren</button>
           </div>
           <div id="mapGrid" class="map-grid"></div>
-          <div id="sideQuestBox" class="sidequest glass inner-box"></div>
-        </div>
+          <div id="sideQuest" class="card sidequest"></div>
+        </section>
 
-        <div id="screenCase" class="panel glass hidden">
-          <div class="section-header">
+        <section id="screenCase" class="screen hidden">
+          <div class="screen-header">
             <div>
-              <span id="caseEyebrow" class="eyebrow">Dossier</span>
+              <p id="caseEyebrow" class="eyebrow">Dossier</p>
               <h2 id="caseTitle">Titel</h2>
             </div>
-            <button id="backToMapBtn" class="secondary">Terug naar kaart</button>
+            <button id="backBtn" class="secondary">Terug naar kaart</button>
           </div>
+          <div id="npcCard" class="card npc-card"></div>
+          <div id="caseStory" class="story"></div>
+          <div id="caseChoices" class="choice-list"></div>
+          <div id="caseExtra" class="card extra-box"></div>
+        </section>
 
-          <div class="npc-card" id="npcCard"></div>
-          <div id="storyText" class="story"></div>
-          <div id="choiceList" class="choices"></div>
-          <div id="caseMeta" class="inner-box"></div>
-        </div>
-
-        <div id="screenFinal" class="panel glass hidden">
-          <span class="eyebrow">Eindrapport</span>
-          <h2>Evaluatie van jouw aanpak</h2>
-          <div id="finalSummary" class="story"></div>
-          <div class="start-actions">
+        <section id="screenFinal" class="screen hidden">
+          <p class="eyebrow">Finale</p>
+          <h2>Eindrapport van jouw aanpak</h2>
+          <div id="finalText" class="story"></div>
+          <div class="actions end">
             <button id="restartBtn">Speel opnieuw</button>
           </div>
-        </div>
+        </section>
       </section>
 
-      <aside class="rightbar glass">
+      <aside class="panel sidebar rightcol">
         <section>
           <h2>Logboek</h2>
           <div id="logbook" class="logbook"></div>
         </section>
         <section>
           <h2>Notities</h2>
-          <div id="notes" class="notes">
-            <p>Zoek naar patronen, afwijkingen in openingstijden, rolverdeling bij partners en bestuurlijke opvolging.</p>
+          <div class="card small-card">
+            Let op patronen, werkvolgorde, partnerafstemming en de balans tussen menselijkheid en handhaving.
           </div>
         </section>
       </aside>
